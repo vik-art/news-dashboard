@@ -1,0 +1,63 @@
+@import "src/styles/placeholders.scss";
+@import "src/styles/variables.scss";
+
+.results-container {
+  margin-top: 40px;
+  @extend %subtitles;
+}
+
+.news-dashboard {
+  margin-top: 40px;
+  border-top: 1px solid $border-color;
+}
+
+.article-card {
+  width: 400px;
+  height: 530px;
+  box-shadow: $shadow;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  border: 1px solid $border-color;
+  &-container {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  &-image {
+    height: 217px;
+  }
+  &-header {
+    height: 110px;
+  }
+  &-text {
+    height: 100px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    color: $text-color;
+  }
+}
+
+.article-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29.26px;
+}
+
+.article-link {
+  color: #000;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.article-date {
+  @extend %flex-container;
+}
+
+.link-container {
+  padding: 0 16px;
+}

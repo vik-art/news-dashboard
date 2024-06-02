@@ -1,0 +1,6 @@
+@import '../styles/placeholders.scss';
+
+.container {
+    @extend %container;
+    width: 1290px;
+}
