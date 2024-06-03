@@ -1,9 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { endPoints } from './ENDPOINTS';
 import { Observable } from 'rxjs';
-import { HttpArticlesResponse } from '../types/interfaces';
+import { Article, HttpArticlesResponse } from '../types/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,11 @@ export class ArticlesService {
 
   getAllArticles(): Observable<HttpArticlesResponse> {
     const url = `${environment.newsAPI}${endPoints.ALL_ARTICLES}`;
-    const today = new Date();
-    const formattedDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
-    console.log(formattedDate);
     return this.http.get<HttpArticlesResponse>(url);
+  }
+
+  getArticle(id: string): Observable<Article> {
+    const url = `${environment.newsAPI}${endPoints.SELECTED_ARTICLE.replace(':id', id)}`;
+    return this.http.get<Article>(url);
   }
 }

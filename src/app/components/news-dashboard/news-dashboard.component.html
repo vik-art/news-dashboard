@@ -1,31 +1,35 @@
-@if(results) {
+<div class="container">
+    @if(results) {
 
-<div class="results-container">
-    <p class="text">Results: {{results}}</p>
-</div>
-}
+    <div class="results-container">
+        <p class="text">Results: {{ results }}</p>
+    </div>
+    }
 
-<div class="news-dashboard">
-    <div class="article-card-container">
-        <div *ngFor="let article of articles" class="card">
-            <mat-card class="article-card">
-                <img class="article-card-image" mat-card-image [src]="article.image_url" alt="">
-                <mat-card-header class="article-card-header">
-                    <mat-card-subtitle class="article-date">
-                        <mat-icon>date_range</mat-icon>
-                        {{article.published_at | formattedDate }}</mat-card-subtitle>
-                    <mat-card-title class="article-title">{{article.title | cropped: 50 }}</mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="article-card-text">
-                    <p>
-                        {{article.summary | cropped: 100}}
-                    </p>
-                </mat-card-content>
-                <div class="link-container">
-                    <a class="article-link" [routerLink]="['/article', article.id]">Read more
-                        <mat-icon>arrow_forward</mat-icon></a>
-                </div>
-            </mat-card>
+    <div class="news-dashboard">
+        <div class="article-card-container">
+            <div *ngFor="let article of articles" class="card">
+                <mat-card class="article-card">
+                    <img class="article-card-image" mat-card-image [src]="article.image_url" alt="" />
+                    <mat-card-header class="article-card-header">
+                        <mat-card-subtitle class="article-date">
+                            <mat-icon>date_range</mat-icon>
+                            {{ article.published_at | formattedDate }}</mat-card-subtitle>
+                        <mat-card-title class="article-title">{{
+                            article.title | cropped : 50
+                            }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="article-card-text">
+                        <p>
+                            {{ article.summary | cropped : 100 }}
+                        </p>
+                    </mat-card-content>
+                    <div class="link-container">
+                        <a class="article-link" [routerLink]="['/article', article.id]">Read more
+                            <mat-icon>arrow_forward</mat-icon></a>
+                    </div>
+                </mat-card>
+            </div>
         </div>
     </div>
 </div>
