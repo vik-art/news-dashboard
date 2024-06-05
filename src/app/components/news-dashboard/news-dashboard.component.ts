@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { NgFor } from "@angular/common";
@@ -24,6 +24,7 @@ import { NgxHighlightWordsModule } from "ngx-highlight-words";
   ],
   templateUrl: "./news-dashboard.component.html",
   styleUrl: "./news-dashboard.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsDashboardComponent {
   @Input() articles: Article[] = [];

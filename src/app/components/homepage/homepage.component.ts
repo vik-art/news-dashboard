@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from "@angular/core";
 import { FilterBarComponent } from "../filter-bar/filter-bar.component";
 import { NewsDashboardComponent } from "../news-dashboard/news-dashboard.component";
 import { Article } from "src/app/types/interfaces";
@@ -11,12 +11,14 @@ import { take } from "rxjs";
   imports: [FilterBarComponent, NewsDashboardComponent],
   templateUrl: "./homepage.component.html",
   styleUrl: "./homepage.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomepageComponent implements OnInit {
   articles: Article[] = [];
   results = 0;
   searchQuery = '';
   private articleService = inject(ArticlesService);
+  private cdr = inject(ChangeDetectorRef)
 
   ngOnInit(): void {
     this.getArticles();
@@ -28,6 +30,7 @@ export class HomepageComponent implements OnInit {
       .pipe(take(1))
       .subscribe((res) => {
         this.articles = res.results;
+        this.cdr.detectChanges();
       });
   }
 

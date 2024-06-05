@@ -5,6 +5,6 @@
         <button type="submit" (click)="setValue()">
             <mat-icon>search</mat-icon>
         </button>
-        <input formControlName="query" class="search-query" type="text" />
+        <input (input)="checkIfEmpty()" formControlName="query" class="search-query" type="text" />
     </form>
 </div>

@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, inject } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+  inject,
+} from "@angular/core";
 import {
   FormBuilder,
   FormGroup,
@@ -22,9 +28,11 @@ import { MatFormFieldModule } from "@angular/material/form-field";
   ],
   templateUrl: "./filter-bar.component.html",
   styleUrl: "./filter-bar.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterBarComponent {
   private fb = inject(FormBuilder);
+  
   @Output() setSearchValue = new EventEmitter<string>();
 
   search: FormGroup = this.fb.group({ query: ["", Validators.required] });
@@ -32,5 +40,9 @@ export class FilterBarComponent {
   setValue() {
     const filterQuery = this.search.controls["query"].value;
     this.setSearchValue.emit(filterQuery);
+  }
+
+  checkIfEmpty() {
+    if (!this.search.controls["query"].value) this.setSearchValue.emit("");
   }
 }
