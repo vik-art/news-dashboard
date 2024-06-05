@@ -1,2 +1,2 @@
-<app-filter-bar></app-filter-bar>
-<app-news-dashboard></app-news-dashboard>
+<app-filter-bar (setSearchValue)="setSearchValue($event)"></app-filter-bar>
+<app-news-dashboard [articles]="articles" [results]="results" [query]="searchQuery"></app-news-dashboard>

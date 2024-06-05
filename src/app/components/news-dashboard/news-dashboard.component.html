@@ -15,14 +15,15 @@
                         <mat-card-subtitle class="article-date">
                             <mat-icon>date_range</mat-icon>
                             {{ article.published_at | formattedDate }}</mat-card-subtitle>
-                        <mat-card-title class="article-title">{{
-                            article.title | cropped : 50
-                            }}</mat-card-title>
+                        <mat-card-title class="article-title">
+                            <ngx-highlight-words [textToHighlight]="article.title | cropped : 50"
+                                [searchWords]="[query]" highlightClassName="search-results"></ngx-highlight-words>
+                        </mat-card-title>
                     </mat-card-header>
                     <mat-card-content class="article-card-text">
-                        <p>
-                            {{ article.summary | cropped : 100 }}
-                        </p>
+                        <ngx-highlight-words [textToHighlight]="article.summary | cropped : 100" [searchWords]="[query]"
+                            highlightClassName="search-results">
+                        </ngx-highlight-words>
                     </mat-card-content>
                     <div class="link-container">
                         <a class="article-link" [routerLink]="['/article', article.id]">Read more

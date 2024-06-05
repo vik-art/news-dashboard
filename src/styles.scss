@@ -1,5 +1,20 @@
+
+@use "igniteui-angular/theming" as *;
+// Uncomment the following lines if you want to add a custom palette:
+// $primary: #731963 !default;
+// $secondary: #ce5712 !default;
+// $app-palette: palette($primary, $secondary, $surface);
+
+/* autoprefixer grid: on */
+
+@include core();
+@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
+@include theme($default-palette);
+// CSS Reset, comment out if not required or using a different module
+@import 'minireset.css/minireset';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'src/styles/placeholders';
+@import 'src/styles/variables';
 
 html,
 body {
@@ -7,16 +22,17 @@ body {
 }
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: $font-family;
 }
 
 * {
     box-sizing: border-box;
 }
 
-input {
+input, button {
     border: none;
     outline: none;
+    background-color: transparent;
 }
 
 a {
@@ -26,5 +42,9 @@ a {
 .container {
     @extend %container;
     width: 1290px;
-    font-family: "Montserrat", sans-serif;
+    font-family: $font-family;
+}
+
+span.search-results {
+  background-color: yellow;
 }

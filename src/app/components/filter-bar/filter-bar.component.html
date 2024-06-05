@@ -1,9 +1,10 @@
 <div class="container">
     <p class="filter-header">Filter by keywords</p>
 
-    <div class="search-container">
-
-        <mat-icon>search</mat-icon>
-        <input class="search-query" type="text">
-    </div>
+    <form [formGroup]="search" class="search-container">
+        <button type="submit" (click)="setValue()">
+            <mat-icon>search</mat-icon>
+        </button>
+        <input formControlName="query" class="search-query" type="text" />
+    </form>
 </div>
